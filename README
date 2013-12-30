@@ -1,0 +1,13 @@
+To use the rube loader you should replace the box2d 2.3.0 to 2.3.9.7 
+this is how you do  it :
+ 
+1. Download Box2d 2.3.0.7 from the official site, blah-blah-blah, that's obvious.
+2. In cocos2d-x/external/Box2D replace all box2d files with the new ones.
+3. If you are using Android platform, add 'Dynamics/Joints/b2MotorJoint.cpp \' to LOCAL_SRC_FILES variable in cocos2d-x/external/Box2D/Android.mk.
+4. If you are using MSVC, add Dynamics/Joints/b2MotorJoint.cpp and Dynamics/Joints/b2MotorJoint.h to libBox2D project. ( allready did it ) 
+5. If you are using GCC 4.3+, add '#include <cstring> to the following headers:
+Common/b2GrowableStack.h
+Common/b2BlockAllocator.h
+This is necessary because GCC 4.3+ stopped including <csrting> and some other standard libs automatically to lower the build time. Don't know why Erin Catto doesn't update his code accordingly to this compiler behaviour.
+
+the Pinball example not respansive to mouse click .. i will work on this latter but you will get the basic idea how to use the loader . 
